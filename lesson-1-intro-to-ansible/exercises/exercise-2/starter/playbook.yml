@@ -5,3 +5,4 @@
     - name: Create dir
       file:
         path: /srv/ansible
+        state: directory
