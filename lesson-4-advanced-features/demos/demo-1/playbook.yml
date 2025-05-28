@@ -6,17 +6,17 @@
 
   tasks:
     - name: Block commands
-      block:
+      block: # group tasks under a block
         - name: Run command
           command: ls -al /home
-          register: home_list
+          register: home_list # store result from the previous command as a value in the variable
         
         - name: Run a command if the first command succeeds
           command: ls -al /etc
-          when: home_list.rc == 0
+          when: home_list.rc == 0 # response code, 0 means it succeeded
         
         - name: Run command if truth_test equals true
           command: ls -al /var
           when: truth_test | bool
-      tags:
+      tags: # tag refers to the block
         - udacity
